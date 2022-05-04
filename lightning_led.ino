@@ -2,15 +2,17 @@
 //  FILE: lightning.pde
 //  AUTHOR: Rob Tillaart
 //  2nd Author: Adrian Sanabria-Diaz
-//  DATE: 2012-05-08
+//  DATE: 2022-05-03
 //
-//  PURPOSE: Simulate Lightning effect on multiple LEDs
+//  PURPOSE: simulate lighning POC
 //  
 //  Adrian: Added loop for multi LED support
 //
 #define BETWEEN 2579
 #define DURATION 43 
 #define TIMES 7
+
+const int myPWMArray [] = {3,5,6,9,10,11};
 
 unsigned long lastTime = 0;
 int waitTime = 0;
@@ -20,8 +22,8 @@ void setup()
   Serial.begin(115200);
   Serial.println("\nStarting Up...");
   
-  // Loop through PWM Pins 9, 10, and 11
-  for (int thisPin = 9; thisPin < 12; thisPin++) {
+  // Loop through PWM Pins in the myPWMArray
+  for (int thisPin : myPWMArray) {
     pinMode(thisPin, OUTPUT); 
   }
 }
@@ -34,8 +36,8 @@ void loop()
     lastTime += waitTime;
     waitTime = random(BETWEEN);
     
-    // Loop through PWM Pins 9, 10, and 11
-    for (int thisPin = 9; thisPin < 12; thisPin++) {
+    // Loop through PWM Pins in the myPWMArray
+    for (int thisPin : myPWMArray) {
       for (int i=0; i< random(TIMES); i++)
         {
           //String spin = char(thisPin)
