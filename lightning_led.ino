@@ -31,7 +31,7 @@ void setup()
     delay(100);
     digitalWrite(thisPin, LOW);
   }
-  # Loop through pin array 3 times
+  // Loop through pin array 3 times
   for (int i = 0; i < 4; i++) {
     for (int thisPin : myPWMArray) {
       digitalWrite(thisPin, HIGH);
