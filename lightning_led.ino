@@ -32,7 +32,8 @@ void setup()
     digitalWrite(thisPin, LOW);
   }
   // Loop through pin array 3 times
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 3; i++) {
+    Serial.println("Looping...");
     for (int thisPin : myPWMArray) {
       digitalWrite(thisPin, HIGH);
       delay(100);
