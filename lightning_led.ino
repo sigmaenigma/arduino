@@ -26,10 +26,27 @@ void setup()
   for (int thisPin : myPWMArray) {
     pinMode(thisPin, OUTPUT);
   }
+  for (int thisPin : myPWMArray) {
+    digitalWrite(thisPin, HIGH);
+    delay(100);
+    digitalWrite(thisPin, LOW);
+  }
+  # Loop through pin array 3 times
+  for (int i = 0; i < 4; i++) {
+    for (int thisPin : myPWMArray) {
+      digitalWrite(thisPin, HIGH);
+      delay(100);
+    }
+    for (int thisPin : myPWMArray) {
+      digitalWrite(thisPin, LOW);
+      delay(100);
+    }
+  }
 }
 
 void loop()
 {
+
   if (millis() - waitTime > lastTime)  // time for a new flash
   {
     // Adjust timing parameters
@@ -38,8 +55,7 @@ void loop()
 
     // Loop through PWM Pins in the myPWMArray
     for (int thisPin : myPWMArray) {
-      for (int i = 0; i < random(TIMES); i++)
-      {
+      for (int i = 0; i < random(TIMES); i++) {
         Serial.println(thisPin);
         digitalWrite(thisPin, HIGH);
         delay(100 + random(DURATION));
@@ -47,6 +63,7 @@ void loop()
         delay(10);
       }
     }
+
   }
   // do other stuff here
 }
